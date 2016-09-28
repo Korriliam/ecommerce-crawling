@@ -1,0 +1,5 @@
+ecommerce-crawling/bin/
+ecommerce-crawling/lib/
+ecommerce-crawling/local/
+ecommerce-crawling/pip*
+*.pyc

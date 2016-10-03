@@ -9,10 +9,10 @@
 #     http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'ecommerce-crawling'
+BOT_NAME = 'ecommerce_crawling'
 
-SPIDER_MODULES = ['ecommerce-crawling.spiders']
-NEWSPIDER_MODULE = 'ecommerce-crawling.spiders'
+SPIDER_MODULES = ['crawler.spiders']
+NEWSPIDER_MODULE = 'crawler.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
@@ -25,7 +25,6 @@ ROBOTSTXT_OBEY = True
 #CONCURRENT_REQUESTS = 32
 
 # Configure a delay for requests for the same website (default: 0)
-import pdb; pdb.set_trace()  # XXX BREAKPOINT
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
 #DOWNLOAD_DELAY = 3

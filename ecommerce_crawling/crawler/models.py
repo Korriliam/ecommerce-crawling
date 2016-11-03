@@ -30,4 +30,10 @@ class Statistics(models.Model):
     class Meta:
         db_table = "Statistics"
 
-
+class item(models.Model):
+    """
+    A single item
+    """
+    name = models.CharField(max_length=255)
+    price = models.IntegerField()
+    marketplace_name = models.CharField(max_length=255)

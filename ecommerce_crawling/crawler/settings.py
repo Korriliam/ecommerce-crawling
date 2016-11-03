@@ -109,8 +109,8 @@ HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 d_settings.configure(
     DATABASES={
         'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': '',
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'mkp',
             'USER': 'root',
             'PASSWORD': 'root',
             'HOST': 'localhost',

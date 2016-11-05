@@ -5,7 +5,7 @@ from django.db import models
 
 
 
-class Statistics(models.Model):
+class Statistic(models.Model):
     '''
     Contains the stats attached to each crawling operation/session (nb of results, ...)
     '''
@@ -28,12 +28,21 @@ class Statistics(models.Model):
     nbScrapedItems = models.BigIntegerField()
 
     class Meta:
-        db_table = "Statistics"
+        db_table = "statistic"
 
-class item(models.Model):
+class Item(models.Model):
     """
     A single item
     """
     name = models.CharField(max_length=255)
     price = models.IntegerField()
     marketplace_name = models.CharField(max_length=255)
+
+    class Meta:
+        db_table = "item"
+
+class UserAgent(models.Model):
+    user_agent = models.CharField(max_length=500)
+
+    class Meta:
+        db_table = "user_agent"

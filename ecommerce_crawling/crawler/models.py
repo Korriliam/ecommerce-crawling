@@ -35,14 +35,81 @@ class Item(models.Model):
     A single item
     """
     name = models.CharField(max_length=255)
-    price = models.IntegerField()
-    marketplace_name = models.CharField(max_length=255)
+    description = models.CharField(max_length=1048)
+    ean = models.CharField(max_length=30)
+    asin = models.CharField(max_length=30)
+    brand = models.CharField(max_length=100)
+    part_number = models.CharField(max_length=30)
+    isbn = models.CharField(max_length=60)
 
     class Meta:
         db_table = "item"
 
 class UserAgent(models.Model):
+    """
+    Some usual user agent used by the rotating user agent class
+    of our app
+    """
     user_agent = models.CharField(max_length=500)
 
     class Meta:
         db_table = "user_agent"
+
+
+class Source(models.Model):
+    """
+     A source such as a marketplace
+    """
+    name = models.CharField(max_length=255)
+    type = models.CharField(max_length=100)
+    language = models.CharField(max_length=15)
+
+    class Meta:
+        db_table = "source"
+
+
+class Category(models.Model):
+    """
+    A category
+    """
+    name = models.CharField(max_length=255)
+    source = models.ForeignKey(Source)
+    class Meta:
+        db_table = "category"
+
+
+class Attribute(models.Model):
+    """
+     An item has some attributes aiming to describe it
+    """
+    name = models.CharField(max_length=255)
+
+
+    class Meta:
+        db_table = "attribute"
+
+
+class ItemAttribute(models.Model):
+    """
+
+    """
+    item = models.ForeignKey(Item)
+    attribute = models.ForeignKey(Attribute)
+    source = models.ForeignKey(Attribute)
+    value = models.CharField(max_length=500)
+
+    class Meta:
+        db_table = "item_Attribute"
+
+class ItemSource(models.Model):
+    """
+
+    """
+    item = models.ForeignKey(Item)
+    category = models.ForeignKey(Category)
+    source = models.ForeignKey(Source)
+
+    class Meta:
+        db_table = "item_source"
+
+

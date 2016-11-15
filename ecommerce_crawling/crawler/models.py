@@ -30,6 +30,27 @@ class Statistic(models.Model):
     class Meta:
         db_table = "statistic"
 
+class Attribute(models.Model):
+    """
+     An item has some attributes aiming to describe it
+    """
+    name = models.CharField(max_length=255)
+
+    class Meta:
+        db_table = "attribute"
+
+class Source(models.Model):
+    """
+     A source such as a marketplace
+    """
+    name = models.CharField(max_length=255)
+    type = models.CharField(max_length=100)
+    language = models.CharField(max_length=15)
+
+    class Meta:
+        db_table = "source"
+
+
 class Item(models.Model):
     """
     A single item
@@ -41,6 +62,8 @@ class Item(models.Model):
     brand = models.CharField(max_length=100)
     part_number = models.CharField(max_length=30)
     isbn = models.CharField(max_length=60)
+    source = models.ManyToManyField(Source, through='ItemSource')
+    attribute = models.ManyToManyField(Attribute, through='ItemAttribute')
 
     class Meta:
         db_table = "item"
@@ -56,16 +79,6 @@ class UserAgent(models.Model):
         db_table = "user_agent"
 
 
-class Source(models.Model):
-    """
-     A source such as a marketplace
-    """
-    name = models.CharField(max_length=255)
-    type = models.CharField(max_length=100)
-    language = models.CharField(max_length=15)
-
-    class Meta:
-        db_table = "source"
 
 
 class Category(models.Model):
@@ -78,15 +91,6 @@ class Category(models.Model):
         db_table = "category"
 
 
-class Attribute(models.Model):
-    """
-     An item has some attributes aiming to describe it
-    """
-    name = models.CharField(max_length=255)
-
-
-    class Meta:
-        db_table = "attribute"
 
 
 class ItemAttribute(models.Model):

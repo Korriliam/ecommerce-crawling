@@ -110,13 +110,13 @@ d_settings.configure(
     DATABASES={
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'mkp',
-            'USER': 'root',
-            'PASSWORD': 'root',
+            'NAME': 'ecom',
+            'USER': 'ecom',
+            'PASSWORD': 'ecom',
             'HOST': 'localhost',
             }
     },
     INSTALLED_APPS=(
-        'ecommerce_crawling',
+        'ecommerce_crawling.crawler',
     )
 )

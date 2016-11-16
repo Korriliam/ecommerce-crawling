@@ -11,11 +11,12 @@ from django.conf import settings as d_settings
 #     http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'ecommerce_crawling'
+BOT_NAME = 'ecommerce_crawling.crawler'
 
-SPIDER_MODULES = ['crawler.spiders']
-NEWSPIDER_MODULE = 'crawler.spiders'
+SPIDER_MODULES = ['ecommerce_crawling.crawler.spiders']
+NEWSPIDER_MODULE = 'ecommerce_crawling.crawler.spiders'
 
+SECRET_KEY = "secret key value"
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'crawler (+http://www.yourdomain.com)'
@@ -105,6 +106,19 @@ ROBOTSTXT_OBEY = False # Our bot don't follow robots.txt recommandations. On ne 
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+INSTALLED_APPS=(
+    'ecommerce_crawling.crawler',
+)
+
+DATABASES={
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'ecom',
+            'USER': 'ecom',
+            'PASSWORD': 'ecom',
+            'HOST': 'localhost',
+            }
+    }
 
 d_settings.configure(
     DATABASES={
@@ -117,6 +131,6 @@ d_settings.configure(
             }
     },
     INSTALLED_APPS=(
-        'ecommerce_crawling.crawler',
+        'crawler',
     )
-)
+    )

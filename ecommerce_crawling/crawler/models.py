@@ -99,7 +99,7 @@ class ItemAttribute(models.Model):
     """
     item = models.ForeignKey(Item)
     attribute = models.ForeignKey(Attribute)
-    source = models.ForeignKey(Attribute)
+    source = models.ForeignKey(Source)
     value = models.CharField(max_length=500)
 
     class Meta:
